@@ -12,6 +12,8 @@ class NameForm(FlaskForm):
 
 items = ["Item 1", "Item 2", "Item 3"]
 
+username = "name"
+
 @app.route('/', methods = ['GET', 'POST'])
 def index():
     name = None
@@ -21,9 +23,9 @@ def index():
         form.name.data = ''
     return render_template('index.html', form=form, name=name, items = items)
 
-@app.route('/user/<name>')
-def user(name):
-    return render_template('user.html', name = name)
+@app.route('/user/<username>')
+def user(username):
+    return render_template('user.html', username = username)
 
 @app.errorhandler(404)
 def page_not_found(e):
