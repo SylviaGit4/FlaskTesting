@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
@@ -12,7 +12,7 @@ class NameForm(FlaskForm):
 
 items = ["Item 1", "Item 2", "Item 3"]
 
-username = "name"
+username = "USER"
 
 @app.route('/', methods = ['GET', 'POST'])
 def index():
@@ -20,7 +20,11 @@ def index():
     form = NameForm()
     if form.validate_on_submit():
         name = form.name.data
-        form.name.data = ''
+        #form.name.data = ''
+
+    if name == username:
+        return redirect(f'/user/{name}')
+
     return render_template('index.html', form=form, name=name, items = items)
 
 @app.route('/user/<username>')
