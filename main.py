@@ -18,9 +18,10 @@ username = "USER"
 def index():
     name = None
     form = NameForm()
+    
     if form.validate_on_submit():
         name = form.name.data
-        #form.name.data = ''
+        form.name.data = ''
 
     if name == username:
         return redirect(f'/user/{name}')
