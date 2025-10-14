@@ -1,15 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Users</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}User{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <style>
+    </style>
+{% endblock %}
+
+{% block body %}
     {% if(name == "user") %}
         <h3>Welcome {{name}}</h3>
     {% else %}
         <h3> Unknown name entered: {{name}}</h3>
     {% endif %}
-</body>
-</html>
+{% endblock %}
